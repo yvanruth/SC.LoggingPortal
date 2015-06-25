@@ -1,5 +1,4 @@
-﻿using SC.LogginPortal.Service.Logging;
-using SC.LogginPortal.Service.Logging.Service;
+﻿using SC.LoggingPortal.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +6,16 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace SC.LogginPortal.Service
+namespace SC.LoggingPortal.Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "SCLogger" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select SCLogger.svc or SCLogger.svc.cs at the Solution Explorer and start debugging.
     public class SCLogger : ISCLogger
     {
-        private readonly ILogger _logger;
         private readonly ILoggingService _loggingService;
 
-        public SCLogger(ILogger logger, ILoggingService loggingService)
+        public SCLogger(ILoggingService loggingService)
         {
-            this._logger = logger;
             this._loggingService = loggingService;
         }
 

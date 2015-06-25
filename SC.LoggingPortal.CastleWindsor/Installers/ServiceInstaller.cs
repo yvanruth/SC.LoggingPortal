@@ -1,7 +1,7 @@
 ﻿namespace SC.LoggingPortal.CastleWindsor.Installers
 {
     using Castle.MicroKernel.Registration;
-    using SC.LogginPortal.Logic.Services;
+    using SC.LoggingPortal.Logic.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;

@@ -1,6 +1,7 @@
 ﻿namespace SC.LoggingPortal.CastleWindsor.Installers
 {
     using Castle.MicroKernel.Registration;
+    using SC.LoggingPortal.Data.Entity;
     using SC.LoggingPortal.Data.Repository;
     using System;
     using System.Collections.Generic;
@@ -17,7 +18,7 @@
         /// <param name="store">The configuration store.</param>
         public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
-            container.Register(Component.For<IMongoDbRepository>().ImplementedBy<MongoDbRepository>());
+            container.Register(Component.For<IRepository<LogMessage>>().ImplementedBy<MongoDbRepository<LogMessage>>());
         }
     }
 }

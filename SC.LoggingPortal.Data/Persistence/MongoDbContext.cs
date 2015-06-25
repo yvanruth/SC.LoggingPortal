@@ -13,7 +13,7 @@
         /// <summary>
         /// The database
         /// </summary>
-        internal readonly MongoDatabaseBase database;
+        internal readonly MongoDatabase database;
 
         internal readonly MongoClient client;
 
@@ -50,7 +50,7 @@
         /// </summary>
         /// <param name="connectionStringOrName">Name of the connection string or.</param>
         /// <returns>MongoDatabase.</returns>
-        private MongoDatabaseBase GetDatabase(string connectionStringOrName)
+        private MongoDatabase GetDatabase(string connectionStringOrName)
         {
             var mongoServer = this.client.GetServer();
             return mongoServer.GetDatabase(this.dbName);
@@ -72,6 +72,11 @@
             }
 
             throw new UriFormatException("Invalid connectionstring");
+        }
+
+        public MongoCollection<TEntity> GetCollection<TEntity>()
+        {
+            return this.database.GetCollection<TEntity>(typeof(TEntity).Name);            
         }
     }
 }
