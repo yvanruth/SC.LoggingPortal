@@ -18,7 +18,7 @@
         /// <param name="store">The configuration store.</param>
         public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
-            container.Register(Component.For<IRepository<LogMessage>>().ImplementedBy<MongoDbRepository<LogMessage>>());
+            container.Register(Component.For<IRepository<LoggingPortal.Data.Entity.LogMessage>>().ImplementedBy<SC.LoggingPortal.Data.Repository.MongoDbRepository<LogMessage>>());
         }
     }
 }

@@ -12,6 +12,6 @@ namespace SC.LoggingPortal.Service
     public interface ISCLogger
     {
         [OperationContract]
-        void DoWork();
+        void LogMessage(string message);
     }
 }

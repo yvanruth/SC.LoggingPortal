@@ -18,15 +18,15 @@
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            _container = new WindsorContainer().Install(FromAssembly.InThisApplication());
+            _container = new WindsorContainer().Install(FromAssembly.Named("SC.LoggingPortal.CastleWindsor"));
             _container.AddFacility<WcfFacility>()
                 .Register
-                (              
-                    Component.For<ILoggingService>().ImplementedBy<LoggingService>(),
+                (                                  
                     Component.For<ISCLogger>()
                             .ImplementedBy<SCLogger>()
                             .Named("SCLogger")
                 );
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

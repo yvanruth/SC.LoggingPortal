@@ -19,8 +19,9 @@ namespace SC.LoggingPortal.Service
             this._loggingService = loggingService;
         }
 
-        public void DoWork()
+        public void LogMessage(string message)
         {
+            this._loggingService.LogMessage("testtttt");
         }
     }
 }

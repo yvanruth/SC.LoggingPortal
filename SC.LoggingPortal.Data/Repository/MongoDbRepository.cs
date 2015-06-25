@@ -9,7 +9,7 @@
     using SC.LoggingPortal.Data.Entity;
     using SC.LoggingPortal.Data.Persistence;
 
-    public abstract class MongoDbRepository<TEntity> : IRepository<TEntity> where TEntity : EntityBase
+    public class MongoDbRepository<TEntity> : IRepository<TEntity> where TEntity : EntityBase
     {
         /// <summary>
         /// The collection
