@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="SC.LogginPortal.Service.SCLogger" CodeBehind="SCLogger.svc.cs" %>
+﻿<%@ ServiceHost Service="SCLogger" Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>
