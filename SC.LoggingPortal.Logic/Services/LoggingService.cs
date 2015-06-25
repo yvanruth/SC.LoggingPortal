@@ -18,7 +18,7 @@
 
         public void LogMessage(string message)
         {
-            this._repository.Insert(new Data.Entity.LogMessage { Id = new Guid(), Message = "test12345", Time = DateTime.Now });
+            this._repository.Insert(new Data.Entity.LogMessage { Id = new Guid(), Message = message, Time = DateTime.Now });
         }
     }
 }
