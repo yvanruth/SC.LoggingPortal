@@ -1,17 +1,28 @@
 ﻿namespace SC.LoggingPortal.LogAppender
 {
     using log4net.Appender;
+    using log4net.spi;
+    using SC.LoggingPortal.LogAppender.Service;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
 
-    public class Log4NetMongoAppender : AppenderSkeleton
+    public class Log4NetMongoAppender : FileAppender
     {
-        private readonly SC.LoggingPortal.LogAppender.Service.SCLogger _logger = new SC.LoggingPortal.LogAppender.Service.SCLogger();               
-        protected override void Append(log4net.Core.LoggingEvent loggingEvent)
+        private readonly SCLogger _logger = new SCLogger();
+
+        public Log4NetMongoAppender()
         {
-            this._logger.LogMessage(string.Format("hahahaa {0} - {1}", loggingEvent.RenderedMessage.ToString(), DateTime.Now.ToLongDateString()));            
+            var x = true;
         }
+        
+        
+        protected override void Append(LoggingEvent loggingEvent)
+        {
+            this._logger.LogMessage(string.Format("{0} - {1}", loggingEvent.RenderedMessage.ToString(), DateTime.Now.ToLongDateString()));            
+        }
+
+        
     }
 }

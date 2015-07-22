@@ -38,10 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\..\..\..\Websites-SIM\loggingportal.sitecore.local\Website\bin\Sitecore.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +60,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\DEVELOPMENT.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -69,8 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Log4NetTester.aspx" />
-    <Content Include="packages.config" />
-    <Content Include="log4net.config" />
+    <None Include="packages.config" />
+    <None Include="log4net.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,7 +81,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <None Include="Web References\SC.LoggingPortal.LogAppender.Service\SCLogger.disco" />
-    <Content Include="Web.config" />
+    <None Include="Web.config" />
     <None Include="Web References\SC.LoggingPortal.LogAppender.Service\SCLogger.wsdl" />
     <None Include="Web References\SC.LoggingPortal.LogAppender.Service\SCLogger.xsd">
       <SubType>Designer</SubType>
