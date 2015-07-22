@@ -18,35 +18,35 @@
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool Insert(TEntity entity);
+        Task InsertAsync(TEntity entity);
 
         /// <summary>
         /// Updates the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool Update(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool Delete(TEntity entity);
+        Task DeleteAsync(TEntity entity);
 
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns>IEnumerable&lt;TEntity&gt;.</returns>
-        IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>TEntity.</returns>
-        TEntity GetById(Guid id);
+        Task<TEntity> GetByIdAsync(Guid id);
 
-        IEnumerable<TEntity> Query(Expression<Func<TEntity, bool>> predicate);
+        Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<TEntity, bool>> predicate);
     }
 }

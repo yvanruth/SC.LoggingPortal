@@ -2,12 +2,7 @@
 {
     using Castle.MicroKernel.Registration;
     using SC.LoggingPortal.Data.Persistence;
-    using System;
     using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class DbContextInstaller : IWindsorInstaller
     {
@@ -18,7 +13,9 @@
         /// <param name="store">The configuration store.</param>
         public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
-            container.Register(Component.For<IMongoDbContext>().ImplementedBy<MongoDbContext>()
+            container
+                .Register(Component.For<LoggingDbContext>().ImplementedBy<LoggingDbContext>()
+                .LifestyleSingleton()
                 .DependsOn(new Hashtable { { "connectionStringOrName", "mongoCollectionLocation" } }));
         }
     }

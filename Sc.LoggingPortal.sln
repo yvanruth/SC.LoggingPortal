@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC.LoggingPortal.Logic", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC.LoggingPortal.LogAppender", "SC.LoggingPortal.LogAppender\SC.LoggingPortal.LogAppender.csproj", "{FC9D7A17-0269-4344-9E91-B7136AE6CAA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC.LoggingPortal.Mongo", "SC.LoggingPortal.Mongo\SC.LoggingPortal.Mongo.csproj", "{1E706ADE-4A5E-4A10-A418-013CB042FD19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{FC9D7A17-0269-4344-9E91-B7136AE6CAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC9D7A17-0269-4344-9E91-B7136AE6CAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC9D7A17-0269-4344-9E91-B7136AE6CAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E706ADE-4A5E-4A10-A418-013CB042FD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E706ADE-4A5E-4A10-A418-013CB042FD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E706ADE-4A5E-4A10-A418-013CB042FD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E706ADE-4A5E-4A10-A418-013CB042FD19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
