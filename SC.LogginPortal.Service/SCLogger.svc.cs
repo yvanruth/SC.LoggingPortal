@@ -1,4 +1,6 @@
-﻿using SC.LoggingPortal.Logic.Services;
+﻿using Microsoft.AspNet.SignalR;
+using SC.LoggingPortal.Logic.Services;
+using SC.LogginPortal.Service.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +15,18 @@ namespace SC.LoggingPortal.Service
     public class SCLogger : ISCLogger
     {
         private readonly ILoggingService _loggingService;
+        private readonly IHubContext hub;
 
         public SCLogger(ILoggingService loggingService)
         {
             this._loggingService = loggingService;
+            hub = GlobalHost.ConnectionManager.GetHubContext<LoggingHub>();
         }
 
         public void LogMessage(string message)
         {
             this._loggingService.LogMessage(message);
+            hub.Clients.All.pull(message);
         }
     }
 }
