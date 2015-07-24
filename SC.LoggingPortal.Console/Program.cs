@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
+using SC.LoggingPortal.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,10 +41,10 @@ namespace SC.LoggingPortal.Console
                 }
             }).Wait();
 
-            hub.On<string>("pull", param => 
+            hub.On<LogMessage>("pull", param => 
             {
-                SetConsoleColor(param);
-                System.Console.WriteLine(param);
+                SetConsoleColor(param.LogLevel);
+                System.Console.WriteLine(param.LoggerMessage);
                 System.Console.ForegroundColor = ConsoleColor.White;
             });
 
