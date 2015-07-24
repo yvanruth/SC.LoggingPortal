@@ -13,14 +13,9 @@
     {
         private readonly SCLogger _logger = new SCLogger();
 
-        public Log4NetMongoAppender()
-        {
-            var x = true;
-        }        
-        
         protected override void Append(LoggingEvent loggingEvent)
         {
             this._logger.LogMessage(new LogMessage { ApplicationName = System.Web.Hosting.HostingEnvironment.SiteName, IPAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"], Is64BitProcess = Environment.Is64BitProcess, LoggerMessage = loggingEvent.RenderedMessage, LoggerName = loggingEvent.LoggerName, LogLevel = loggingEvent.Level.Name, LogUserIdentity = loggingEvent.Identity, MachineName = Environment.MachineName, NetVersion = Environment.Version.Build.ToString(), TimeStamp = loggingEvent.TimeStamp });            
-        }        
+        }
     }
 }
