@@ -11,16 +11,10 @@
     public class Log4NetMongoAppender : FileAppender
     {
         private readonly SCLogger _logger = new SCLogger();
-
-        public Log4NetMongoAppender()
-        {
-            var x = true;
-        }
-        
         
         protected override void Append(LoggingEvent loggingEvent)
         {
-            this._logger.LogMessage(string.Format("{0} - {1}", loggingEvent.RenderedMessage.ToString(), DateTime.Now.ToLongDateString()));            
+            this._logger.LogMessage(string.Format("{0} - {1} - {2}", loggingEvent.Level.Name, loggingEvent.RenderedMessage.ToString(), DateTime.Now.ToLongDateString()));            
         }
 
         

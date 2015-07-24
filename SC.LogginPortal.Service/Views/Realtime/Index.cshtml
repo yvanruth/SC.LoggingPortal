@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
     <title></title>
+    <link href="~/Content/logginportal.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
@@ -8,7 +9,11 @@
         $(function () {
             var hub = $.connection.loggingHub;
             hub.client.pull = function (message) {
-                $(".container").prepend("<div>" + message + "</div>");
+                var data = message.split("-");
+                data[0] = data[0].trim().toLowerCase()
+
+
+                $(".container").prepend("<div class='" + data[0] + "'>" + message + "</div>");
             }
 
             $.connection.hub.start().done();

@@ -11,7 +11,22 @@ namespace SC.LoggingPortal.Console
     {
         static void Main(string[] args)
         {
-            var connection = new HubConnection("http://scloggingportalservice");
+            string[] data = new string[] {};
+            foreach(var arg in args)
+            {
+                if(arg.StartsWith("--server=", StringComparison.OrdinalIgnoreCase))
+                {
+                    data = arg.Split('=');
+                }
+            }
+
+            if(data.Count() < 2)
+            {
+                return;
+            }
+
+
+            var connection = new HubConnection(data[1]);
             var hub = connection.CreateHubProxy("LoggingHub");
             connection.Start().ContinueWith(task =>
             {
@@ -25,9 +40,41 @@ namespace SC.LoggingPortal.Console
                 }
             }).Wait();
 
-            hub.On<string>("pull", param => { System.Console.WriteLine(param); });
+            hub.On<string>("pull", param => 
+            {
+                SetConsoleColor(param);
+                System.Console.WriteLine(param);
+                System.Console.ForegroundColor = ConsoleColor.White;
+            });
+
+
             System.Console.Read();
             connection.Stop();
+        }
+
+        private static void SetConsoleColor(string param)
+        {
+            var level = param.Split('-').FirstOrDefault();
+            if(string.IsNullOrWhiteSpace(level))
+            {
+                return;
+            }
+
+            ConsoleColor color = ConsoleColor.White;
+
+            switch (level.Trim().ToUpper())
+            {
+                case "ERROR":
+                case "CRITICAL":
+                case "FATAL":
+                    color = ConsoleColor.Red;
+                    break;
+                case "WARN":
+                    color = ConsoleColor.Yellow;
+                    break;
+            }
+
+            System.Console.ForegroundColor = color;
         }
     }
 }

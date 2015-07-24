@@ -134,6 +134,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\logginportal.css" />
     <Content Include="Global.asax" />
     <Content Include="SCLogger.svc" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
