@@ -1,16 +1,13 @@
 ﻿namespace SC.LoggingPortal.Service
 {
-    using System;
-    using System.Diagnostics;
-    using System.ServiceModel;
-    using System.ServiceModel.Description;
-    using System.Threading;
     using Castle.Facilities.WcfIntegration;
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
     using Castle.Windsor.Installer;
-    using SC.LoggingPortal.CastleWindsor;
-    using SC.LoggingPortal.Logic.Services;
+    using System;
+    using System.Web.Routing;
+    using System.Web.Mvc;
+    using SC.LoggingPortal.Service.App_Start;
 
     public class Global : System.Web.HttpApplication
     {
@@ -18,6 +15,9 @@
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
             _container = new WindsorContainer().Install(FromAssembly.Named("SC.LoggingPortal.CastleWindsor"));
             _container.AddFacility<WcfFacility>()
                 .Register
