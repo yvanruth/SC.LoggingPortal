@@ -7,6 +7,6 @@
 
     public interface ILoggingService
     {
-        void LogMessage(string message);
+        void LogMessage(SC.LoggingPortal.Data.Entity.LogMessage message);
     }
 }

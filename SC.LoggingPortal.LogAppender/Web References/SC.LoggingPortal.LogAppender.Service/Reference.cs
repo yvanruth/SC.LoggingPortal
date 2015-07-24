@@ -27,6 +27,7 @@ namespace SC.LoggingPortal.LogAppender.SC.LoggingPortal.LogAppender.Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_ISCLogger", Namespace="http://tempuri.org/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityBase))]
     public partial class SCLogger : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback LogMessageOperationCompleted;
@@ -74,18 +75,18 @@ namespace SC.LoggingPortal.LogAppender.SC.LoggingPortal.LogAppender.Service {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISCLogger/LogMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LogMessage([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string message) {
+        public void LogMessage([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] LogMessage message) {
             this.Invoke("LogMessage", new object[] {
                         message});
         }
         
         /// <remarks/>
-        public void LogMessageAsync(string message) {
+        public void LogMessageAsync(LogMessage message) {
             this.LogMessageAsync(message, null);
         }
         
         /// <remarks/>
-        public void LogMessageAsync(string message, object userState) {
+        public void LogMessageAsync(LogMessage message, object userState) {
             if ((this.LogMessageOperationCompleted == null)) {
                 this.LogMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogMessageOperationCompleted);
             }
@@ -116,6 +117,191 @@ namespace SC.LoggingPortal.LogAppender.SC.LoggingPortal.LogAppender.Service {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.57.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/SC.LoggingPortal.Data.Entity")]
+    public partial class LogMessage : EntityBase {
+        
+        private string applicationNameField;
+        
+        private string iPAddressField;
+        
+        private bool is64BitProcessField;
+        
+        private bool is64BitProcessFieldSpecified;
+        
+        private string logLevelField;
+        
+        private string logUserIdentityField;
+        
+        private string loggerMessageField;
+        
+        private string loggerNameField;
+        
+        private string machineNameField;
+        
+        private string netVersionField;
+        
+        private System.DateTime timeStampField;
+        
+        private bool timeStampFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string ApplicationName {
+            get {
+                return this.applicationNameField;
+            }
+            set {
+                this.applicationNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string IPAddress {
+            get {
+                return this.iPAddressField;
+            }
+            set {
+                this.iPAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Is64BitProcess {
+            get {
+                return this.is64BitProcessField;
+            }
+            set {
+                this.is64BitProcessField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Is64BitProcessSpecified {
+            get {
+                return this.is64BitProcessFieldSpecified;
+            }
+            set {
+                this.is64BitProcessFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string LogLevel {
+            get {
+                return this.logLevelField;
+            }
+            set {
+                this.logLevelField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string LogUserIdentity {
+            get {
+                return this.logUserIdentityField;
+            }
+            set {
+                this.logUserIdentityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string LoggerMessage {
+            get {
+                return this.loggerMessageField;
+            }
+            set {
+                this.loggerMessageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string LoggerName {
+            get {
+                return this.loggerNameField;
+            }
+            set {
+                this.loggerNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MachineName {
+            get {
+                return this.machineNameField;
+            }
+            set {
+                this.machineNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string NetVersion {
+            get {
+                return this.netVersionField;
+            }
+            set {
+                this.netVersionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime TimeStamp {
+            get {
+                return this.timeStampField;
+            }
+            set {
+                this.timeStampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TimeStampSpecified {
+            get {
+                return this.timeStampFieldSpecified;
+            }
+            set {
+                this.timeStampFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LogMessage))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.57.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/SC.LoggingPortal.Data.Entity")]
+    public partial class EntityBase {
+        
+        private string idField;
+        
+        /// <remarks/>
+        public string Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
         }
     }
     

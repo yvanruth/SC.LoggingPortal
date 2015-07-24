@@ -23,7 +23,7 @@ namespace SC.LoggingPortal.Service
             hub = GlobalHost.ConnectionManager.GetHubContext<LoggingHub>();
         }
 
-        public void LogMessage(string message)
+        public void LogMessage(SC.LoggingPortal.Data.Entity.LogMessage message)
         {
             this._loggingService.LogMessage(message);
             hub.Clients.All.pull(message);

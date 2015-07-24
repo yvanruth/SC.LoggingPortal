@@ -2,8 +2,9 @@
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://scloggingportalservice/SCLogger.svc?disco" filename="SCLogger.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scloggingportalservice/SCLogger.svc?xsd=xsd1" filename="SCLogger.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scloggingportalservice/SCLogger.svc?xsd=xsd2" filename="SCLogger.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scloggingportalservice/SCLogger.svc?xsd=xsd0" filename="SCLogger0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scloggingportalservice/SCLogger.svc?xsd=xsd1" filename="SCLogger1.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://scloggingportalservice/SCLogger.svc?wsdl" filename="SCLogger.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

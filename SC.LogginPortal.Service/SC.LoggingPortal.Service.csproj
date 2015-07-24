@@ -139,6 +139,10 @@
       <Project>{7186a893-b0a0-49a4-8fba-015dba5104b8}</Project>
       <Name>SC.LoggingPortal.CastleWindsor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SC.LoggingPortal.Data\SC.LoggingPortal.Data.csproj">
+      <Project>{a0429495-bd2b-4d07-bc4f-da130dd02060}</Project>
+      <Name>SC.LoggingPortal.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SC.LoggingPortal.Logic\SC.LoggingPortal.Logic.csproj">
       <Project>{2bd1af92-82ed-4a75-bbe8-022b1eee7348}</Project>
       <Name>SC.LoggingPortal.Logic</Name>
