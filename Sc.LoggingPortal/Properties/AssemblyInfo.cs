@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sc.LoggingPortal")]
+[assembly: AssemblyTitle("SC.LoggingPortal")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sc.LoggingPortal")]
+[assembly: AssemblyProduct("SC.LoggingPortal")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a109bcea-3bee-4eb7-aa63-be6760f8d3d3")]
+[assembly: Guid("75f2df0a-519b-4b20-9acf-6436a4b0a08b")]
 
 // Version information for an assembly consists of the following four values:
 //
