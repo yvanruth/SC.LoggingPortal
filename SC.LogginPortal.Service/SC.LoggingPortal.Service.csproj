@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SC.LogginPortal.Service</RootNamespace>
     <AssemblyName>SC.LogginPortal.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <UseIISExpress>true</UseIISExpress>
@@ -22,6 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,6 +88,7 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Services" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.ServiceModel.Activation" />
@@ -96,7 +98,6 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\RealtimeController.cs" />
+    <Compile Include="Controllers\SolrController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +169,7 @@
     <Content Include="Views\Realtime\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Solr\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +189,10 @@
     <ProjectReference Include="..\SC.LoggingPortal.Logic\SC.LoggingPortal.Logic.csproj">
       <Project>{2bd1af92-82ed-4a75-bbe8-022b1eee7348}</Project>
       <Name>SC.LoggingPortal.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SC.LoggingPortal.Solr\SC.LoggingPortal.Solr.csproj">
+      <Project>{22a0bd0a-5fab-4e9d-b2b6-8366fb439cde}</Project>
+      <Name>SC.LoggingPortal.Solr</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

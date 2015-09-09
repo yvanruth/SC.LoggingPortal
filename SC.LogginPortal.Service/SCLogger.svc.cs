@@ -27,6 +27,7 @@ namespace SC.LoggingPortal.Service
         {
             this._loggingService.LogMessage(message);
             hub.Clients.All.pull(message);
+            // Update solr index
         }
     }
 }

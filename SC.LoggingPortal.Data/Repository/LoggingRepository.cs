@@ -72,8 +72,8 @@
 
         public virtual async Task<IEnumerable<LogMessage>> GetAllAsync()
         {
-            var result = await dbContext.LogMessages.FindAsync(_ => true);
-            return result.ToListAsync().Result.AsEnumerable();
+            var result = await dbContext.LogMessages.FindAsync(_ => true).Result.ToListAsync();
+            return result;
         }
 
         public virtual async Task<IEnumerable<LogMessage>> QueryAsync(System.Linq.Expressions.Expression<Func<LogMessage, bool>> predicate)

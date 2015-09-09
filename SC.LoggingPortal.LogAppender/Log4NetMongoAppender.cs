@@ -15,7 +15,7 @@
 
         public Log4NetMongoAppender()
         {
-            var x = true;
+            //var x = true;
         }
 
         protected override void Append(LoggingEvent loggingEvent)
