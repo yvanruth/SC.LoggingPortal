@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5A037285-20EC-4A04-A90B-41921CE6C29D}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,6 +23,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC.LoggingPortal.Console", "SC.LoggingPortal.Console\SC.LoggingPortal.Console.csproj", "{CB1D66FB-0C7F-4B51-95BF-B2A35D6F98F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC.LoggingPortal.Solr", "SC.LoggingPortal.Solr\SC.LoggingPortal.Solr.csproj", "{22A0BD0A-5FAB-4E9D-B2B6-8366FB439CDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{36A62857-9070-4003-B846-40CD10133CBC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
