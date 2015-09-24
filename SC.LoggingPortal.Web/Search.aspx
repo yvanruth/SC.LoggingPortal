@@ -8,26 +8,41 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="true">
-            <ContentTemplate>
-                <asp:Repeater ID="rptFacets" runat="server" OnItemDataBound="rptFacets_ItemDataBound">
-                    <HeaderTemplate>
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="true">
+                <ContentTemplate>
+                    <div style="border:solid black 1px; width:500px; float:left;margin-right: 20px;">
+                        <asp:Repeater ID="rptFacets" runat="server" OnItemDataBound="rptFacets_ItemDataBound">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <h3>
+                                    <asp:Literal ID="litFacetName" runat="server" /></h3>
+                                <asp:CheckBoxList ID="cblFacetOptions" runat="server" DataTextFormatString="" AutoPostBack="true" />
+                            </ItemTemplate>
+                            <FooterTemplate>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
 
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <h3><asp:Literal ID="litFacetName" runat="server" /></h3>
-                        <asp:CheckBoxList ID="cblFacetOptions" runat="server" DataTextFormatString="" AutoPostBack="true" OnSelectedIndexChanged="cblFacetOptions_SelectedIndexChanged" /> 
-                    </ItemTemplate>
-                    <FooterTemplate>
 
-                    </FooterTemplate>
-                </asp:Repeater>
-            </ContentTemplate>
+                   <div style="border:solid black 1px; width:1000px; float:left;">
+                       <asp:Repeater ID="rptLogMessages" runat="server" OnItemDataBound="rptLogMessages_ItemDataBound">
+                           <HeaderTemplate>
 
-        </asp:UpdatePanel>
-    </div>
+                           </HeaderTemplate>
+                           <ItemTemplate>
+                               <asp:Literal ID="litMessage" runat="server"></asp:Literal><br />
+                           </ItemTemplate>
+                           <FooterTemplate>
+
+                           </FooterTemplate>
+                       </asp:Repeater>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </form>
 </body>
 </html>

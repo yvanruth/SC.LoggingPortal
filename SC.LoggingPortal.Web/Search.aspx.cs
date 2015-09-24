@@ -45,6 +45,9 @@ namespace SC.LoggingPortal.Web
                 //}
             });
 
+            this.rptLogMessages.DataSource = result.ToList();
+            this.rptLogMessages.DataBind();
+
             this.rptFacets.DataSource = result.FacetFields.Select(x => x.Key);
             this.rptFacets.DataBind();
         }
@@ -89,9 +92,19 @@ namespace SC.LoggingPortal.Web
             }
         }
 
-        protected void cblFacetOptions_SelectedIndexChanged(object sender, EventArgs e)
+        protected void rptLogMessages_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                SolrLogMessage message = e.Item.DataItem as SolrLogMessage;
 
+                Literal litMessage = e.Item.FindControl("litMessage") as Literal;
+
+                if (litMessage != null)
+                {
+                    litMessage.Text = message.LoggerMessage;
+                }
+            }
         }
     }
 }
