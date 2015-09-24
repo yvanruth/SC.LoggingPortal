@@ -15,13 +15,13 @@ namespace SC.LoggingPortal.Solr
     {
         private int updateCount = 1000;
         ISolrOperations<SolrLogMessage> solr;
-        
-        private LoggingRepository _loggingRepository;
+
+        private IRepository<LogMessage> _loggingRepository;
 
         public Indexer()
-        {
+        {           
             solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
-            _loggingRepository = Windsor.Container.Resolve<LoggingRepository>();
+            _loggingRepository = Windsor.Container.Resolve<IRepository<LogMessage>>();
 
             updateCount = int.Parse(ConfigurationManager.AppSettings["SolrIndexUpdate"]);
         }
