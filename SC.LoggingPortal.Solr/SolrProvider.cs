@@ -19,7 +19,7 @@ namespace SC.LoggingPortal.Solr
         {
             return GetResults(new SolrRequestOptions()
             {
-                Page = 0,
+                Page = 1,
                 PageSize = 100,
                 Facets = null
             });
@@ -41,7 +41,7 @@ namespace SC.LoggingPortal.Solr
                 },
                 Fields = new List<string>() { },
                 OrderBy = new[] { new SortOrder("timestamp") },
-                Start = 0, //ops.Page > 1 ? (ops.Page - 1) * ops.PageSize : 0,
+                Start = ops.Page > 1 ? (ops.Page - 1) * ops.PageSize : 0,
                 Rows = ops.PageSize
             };
             if (ops.Facets != null)

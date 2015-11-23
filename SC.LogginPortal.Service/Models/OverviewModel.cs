@@ -7,6 +7,8 @@ namespace SC.LogginPortal.Service.Models
 {
     public class OverviewModel
     {
+        public int Page { get; set; }
+
         public List<SC.LoggingPortal.Solr.SolrLogMessage> Results { get; set; }
 
         public int TotalCount { get; set; }

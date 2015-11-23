@@ -53,6 +53,15 @@ div.category {
     margin-bottom: 5px;
 }
 
+.facets ul {
+    padding: 0;
+    list-style: none;
+}
+.facets label {
+    font-weight: normal;
+    font-size: 14px;
+}
+
 /* Copied */
 
 html {
