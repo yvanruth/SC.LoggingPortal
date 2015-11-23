@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - SCLoggingPortal</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/logginportal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <nav>
+                    <ul>
+                        <li class="@(ViewBag.Active == "home" ? "active" : null)"><a href="/">Home</a></li>
+                        <li class="@(ViewBag.Active == "realtime" ? "active" : null)"><a href="/realtime">Realtime</a></li>
+                        <li class="@(ViewBag.Active == "solr" ? "active" : null)"><a href="/solr">SOLR</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="float-right">
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                &copy; @DateTime.Now.Year.ToString() - <a target="_blank" href="www.estate.nl">Estate Internet</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

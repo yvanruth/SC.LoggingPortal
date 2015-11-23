@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -25,7 +26,10 @@ namespace SC.LogginPortal.Service.Controllers
             s.Stop();
             Debug.WriteLine("Solr Index reindex in: " + s.ElapsedMilliseconds + " ms");
 
-            return Redirect("/solr");
+            dynamic model = new ExpandoObject();
+            model.Status = String.Format("Index rebuilded in: {0} ms.", s.ElapsedMilliseconds);
+
+            return View("Index", model);
         }
     }
 }

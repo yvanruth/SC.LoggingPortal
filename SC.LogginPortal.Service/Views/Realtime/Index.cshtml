@@ -1,32 +1,27 @@
-﻿<html>
-<head>
-    <title></title>
-    <link href="~/Content/logginportal.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script>
-        $(function () {
-            var hub = $.connection.loggingHub;
-            hub.client.pull = function (message) {
-                
+﻿@{
+    ViewBag.Title = "Realtime";
+    ViewBag.Active = "realtime";
+}
+
+<link href="~/Content/logginportal.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    $(function () {
+        var hub = $.connection.loggingHub;
+        hub.client.pull = function (message) {
 
 
-                $(".container").prepend("<div class='" + message.LogLevel.toLowerCase() + "'>" + message.LoggerMessage + "</div>");
-            }
 
-            $.connection.hub.start().done();
-        })
+            $(".container").prepend("<div class='" + message.LogLevel.toLowerCase() + "'>" + message.LoggerMessage + "</div>");
+        }
 
-    </script>
+        $.connection.hub.start().done();
+    })
 
-</head>
-<body>
-    <div class="container">
+</script>
 
-    </div>
-</body>
-</html>
-
+<div class="container"></div>
 
 

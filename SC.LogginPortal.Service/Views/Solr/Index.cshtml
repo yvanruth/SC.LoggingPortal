@@ -1,16 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "Solr";
+    ViewBag.Active = "solr";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-        @Html.BeginForm("RebuildSolrIndex", "Solr", FormMethod.Post)
-        {
-            <input type="submit" value="Rebuild Solr Index" />
-        }
+@model dynamic
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Status))
+{
+    <div>@Model.Status</div>
+    <br />
+}
+
+@using (Html.BeginForm("RebuildSolrIndex", "Solr", FormMethod.Post))
+{
+    <div class="rebuildsolr-panel">
+        <input class="solrbutton" type="submit" value="Rebuild Solr Index" />
     </div>
-</body>
-</html>
+}
+
+<script type="text/javascript">
+    $('.rebuildsolr-panel .solrbutton').on('click', function () {
+        $(this).hide();
+        $('.rebuildsolr-panel').append('<div>Rebuilding...</div>');
+    });
+</script>
