@@ -10,32 +10,48 @@ namespace SC.LoggingPortal.Service.Controllers
 {
     public class HomeController : Controller
     {
+        public const int PageSize = 100;
+
         public ActionResult Index()
         {
             var result = new SolrProvider().GetResults();
 
-            var facets = result.Facets.OrderBy(f => f.FieldName).ToList();
-            var loggerNameFacet = facets.FirstOrDefault(c => c.FieldName.Equals("logger_name", StringComparison.OrdinalIgnoreCase));
-            facets.Remove(loggerNameFacet);
-            facets.Add(loggerNameFacet);
-            
             return View(new Models.OverviewModel()
             {
                 Results = result.Results,
                 TotalCount = result.TotalResults,
-                Facets = facets,
-                Page = 1
+                Facets = result.Facets,
+                Page = 1,
+                TotalPages = ((result.TotalResults + PageSize - 1) / PageSize)
             });
         }
 
-        public ActionResult JSON(int page)
+        public ActionResult JSON(int page, string f = null)
         {
+            var facets = HttpUtility.ParseQueryString(f);
+
+            Dictionary<string, string[]> parsedFacets = null;
+            if (facets.HasKeys())
+            {
+                parsedFacets = new Dictionary<string, string[]>();
+                foreach (string key in facets.Keys)
+                {
+                    string value = facets[key];
+                    if (!string.IsNullOrEmpty(facets[key]))
+                    {
+                        parsedFacets.Add(key, HttpUtility.UrlDecode(facets[key]).Split(','));
+                    }
+                }
+            }
+
             var result = new SolrProvider().GetResults(new SolrRequestOptions()
             {
                 Page = page,
-                PageSize = 100,
-                Facets = null
+                PageSize = PageSize,
+                Facets = parsedFacets
             });
+
+            string timestamp = parsedFacets.ContainsKey("timestamp") ? parsedFacets["timestamp"][0] : string.Empty;
 
             return Json(new
             {
@@ -44,7 +60,9 @@ namespace SC.LoggingPortal.Service.Controllers
                         Results = result.Results,
                         TotalCount = result.TotalResults,
                         Facets = result.Facets,
-                        Page = page
+                        Timestamp = timestamp,
+                        Page = page,
+                        TotalPages = ((result.TotalResults + PageSize - 1) / PageSize)
                     })
             }, JsonRequestBehavior.AllowGet);
         }

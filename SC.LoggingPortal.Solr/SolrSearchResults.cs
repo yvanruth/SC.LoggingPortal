@@ -16,13 +16,23 @@ namespace SC.LoggingPortal.Solr
     public class SolrFacet
     {
         public String FieldName { get; set; }
+        public SolrFacetType FacetType { get; set; }
         public List<SolrFilter> Filters { get; set; }
     }
 
     public class SolrFilter
     {
-        public String Value { get; set; }
+        public object Value { get; set; }
         public int Count { get; set; }
+        public bool Checked { get; set; }
+    }
+
+    public enum SolrFacetType
+    {
+        FIELD,
+        DATE,
+        PIVOT,
+        QUERY
     }
 
     public class SolrRequestOptions

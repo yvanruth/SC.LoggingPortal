@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="ISCLogger.cs" />
     <Compile Include="Models\OverviewModel.cs" />
+    <Compile Include="Helpers\LoggingPortalHtmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCLogger.svc.cs">
       <DependentUpon>SCLogger.svc</DependentUpon>

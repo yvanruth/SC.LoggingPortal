@@ -6,41 +6,70 @@
 @model OverviewModel
 
 <div class="results" data-pageid="@Model.Page">
-    <div class="col-md-4 facets">
-        <div><a href="#">Reload</a></div>
-        <div class="category"><b>Facets</b></div>
-        @foreach (var facet in Model.Facets)
-        {
+    <div class="controls">
+        <div class="col-md-4">
+            <div><a href="#" class="btn btn-default clearfilters">Clear filters</a></div>
+        </div>
+        <div class="col-md-8">
             <div>
-                <div><b>@facet.FieldName</b></div>
+                <a class="btn btn-default page page-prev" href="#"><</a> <a class="btn btn-default page page-next" href="#">></a>
+
+                @foreach (var facet in @Model.Facets.Where(c => c.Filters.Any(f => f.Checked)))
+                {
+                    foreach (var filter in facet.Filters.Where(c => c.Checked))
+                    {
+                        string name = facet.FacetType == SC.LoggingPortal.Solr.SolrFacetType.DATE ? ((DateTime)filter.Value).ToString("yyyy-MM-dd") : (string)filter.Value;
+                        if (name.Length > 30) { name = name.Substring(0, 27) + "..."; }
+                                
+                        <a href="#" class="btn btn-default del-filter" data-filter="@filter.Value" data-facet="@facet.FieldName">
+                            <span class="facetspan">@facet.FieldName</span>
+                            <span class="filterspan">@name</span>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <form id="facetForm">
+        <div class="col-md-4 facets">
+            <div class="category"><b>Facets</b></div>
+            <div><b>@LoggingPortalHtmlHelper.FriendlyFieldName("timestamp")</b></div>
+            <div>
+                <input type="text" class="daterange" name="timestamp" value="@Model.Timestamp" />
+            </div>
+
+            @foreach (var facet in Model.Facets)
+            {
+                <div><b>@LoggingPortalHtmlHelper.FriendlyFieldName(facet.FieldName)</b></div>
+                if (facet.FacetType == SC.LoggingPortal.Solr.SolrFacetType.FIELD)
+                {
                 <ul>
                     @foreach (var filter in facet.Filters)
                     {
-                        <li>
-                            <label>
-                                <input type="checkbox" name="facet" value="@filter.Value" />
-                                @filter.Value (@filter.Count)
-                            </label>
-                        </li>
+                    <li>
+                        <label>
+                            <input disabled="@(filter.Count == 0)" type="checkbox" name="@facet.FieldName" value="@filter.Value" checked="@filter.Checked" />
+                            @filter.Value (@filter.Count)
+                        </label>
+                    </li>
                     }
                 </ul>
-
-            </div>
-        }
-    </div>
+                }
+            }
+        </div>
+    </form>
 
     <div class="col-md-8 actualresult">
-        <div>
-            <a class="page page-prev" href="#"><</a> <a class="page page-next" href="#">></a>
-        </div>
-        <div class="category"><b>Total results: @Model.TotalCount</b> (Page: @Model.Page)</div>
+        <div class="category"><b>Total results: @Model.TotalCount</b> (Page: @Model.Page / @Model.TotalPages)</div>
         @foreach (var r in Model.Results)
         {
-            <div class="record">
+            <div class="record" title="@r.LoggerName"  data-placement="bottom" data-toggle="popover" data-content="@LoggingPortalHtmlHelper.GetPopoverContent(r)">
                 <div class="overflowfix">
+                    <div class="col-md-1" data-loglevel="@r.LogLevel">@r.LogLevel</div>
                     <div class="col-md-2">@r.TimeStamp.ToString("dd-MM-yyyy HH:mm")</div>
                     <div class="col-md-3">@r.LoggerName</div>
-                    <div class="col-md-7">@r.LoggerMessage</div>
+                    <div class="col-md-6">@r.LoggerMessage</div>
                 </div>
             </div>
         }

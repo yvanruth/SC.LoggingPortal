@@ -50,16 +50,72 @@ div.category {
 .actualresult .record {
     border-bottom: 1px solid lightgrey;
     padding-bottom: 5px;
-    margin-bottom: 5px;
+    padding-top: 5px;
+}
+.actualresult .record:hover {
+    background: #d3dce0;
+    cursor: pointer;
+}
+.actualresult .record [data-loglevel="ERROR"] {
+    color: red;
+}
+.actualresult .record [data-loglevel="WARN"] {
+    color: orange;
+}
+.actualresult .record [data-loglevel="INFO"] {
+    color: grey;
 }
 
 .facets ul {
     padding: 0;
     list-style: none;
 }
+.facets ul li {    
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.facets ul li label:hover {
+    cursor: pointer;
+}
 .facets label {
     font-weight: normal;
     font-size: 14px;
+}
+
+.results .controls {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.results .controls a.btn {
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+.results .controls a.del-filter {
+    padding: 1px 25px 3px 12px;
+    background-image: url('data:image/png;base64,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');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 20px;
+}
+.results .controls a.del-filter:nth-child(3) {
+    margin-left: 20px;
+}
+.results .controls a.del-filter span.filterspan,
+.results .controls a.del-filter span.facetspan {
+    display: block;
+    line-height: 14px;
+}
+.results .controls a.del-filter span.facetspan {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.popover {
+    max-width: 800px;
+}
+.overflowfix > div {
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 /* Copied */
