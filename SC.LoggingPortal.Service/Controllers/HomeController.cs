@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SC.LogginPortal.Service.Controllers
+namespace SC.LoggingPortal.Service.Controllers
 {
     public class HomeController : Controller
     {
@@ -14,11 +14,16 @@ namespace SC.LogginPortal.Service.Controllers
         {
             var result = new SolrProvider().GetResults();
 
+            var facets = result.Facets.OrderBy(f => f.FieldName).ToList();
+            var loggerNameFacet = facets.FirstOrDefault(c => c.FieldName.Equals("logger_name", StringComparison.OrdinalIgnoreCase));
+            facets.Remove(loggerNameFacet);
+            facets.Add(loggerNameFacet);
+            
             return View(new Models.OverviewModel()
             {
                 Results = result.Results,
                 TotalCount = result.TotalResults,
-                Facets = result.Facets,
+                Facets = facets,
                 Page = 1
             });
         }

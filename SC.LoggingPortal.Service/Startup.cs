@@ -5,8 +5,8 @@ using Owin;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-[assembly: OwinStartup(typeof(SC.LogginPortal.Service.Startup))]
-namespace SC.LogginPortal.Service
+[assembly: OwinStartup(typeof(SC.LoggingPortal.Service.Startup))]
+namespace SC.LoggingPortal.Service
 {
 
     public class Startup

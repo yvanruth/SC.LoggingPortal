@@ -5,7 +5,7 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
-namespace SC.LogginPortal.Service.SignalR
+namespace SC.LoggingPortal.Service.SignalR
 {
     [HubName("loggingHub")]
     public class LoggingHub : Hub

@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using SC.LoggingPortal.Logic.Services;
-using SC.LogginPortal.Service.SignalR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+using SC.LoggingPortal.Service.SignalR;
 
 namespace SC.LoggingPortal.Service
 {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SC.LogginPortal.Service.Controllers
+namespace SC.LoggingPortal.Service.Controllers
 {
     public class SolrController : Controller
     {

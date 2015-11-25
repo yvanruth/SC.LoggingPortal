@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,11 @@ namespace SC.LoggingPortal.Solr
     public class SolrProvider
     {
         ISolrOperations<SolrLogMessage> solr;
-        SolrQueryResults<SolrLogMessage> result = new SolrQueryResults<SolrLogMessage>();
+
+        public SolrProvider()
+        {
+            solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
+        }
 
         public SolrSearchResults GetResults()
         {
@@ -28,7 +33,6 @@ namespace SC.LoggingPortal.Solr
         public SolrSearchResults GetResults(SolrRequestOptions ops)
         {
             string[] facets = ConfigurationManager.AppSettings["SolrFacets"].Split('|');
-            solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
 
             var queryOptions = new QueryOptions
             {
@@ -49,7 +53,7 @@ namespace SC.LoggingPortal.Solr
                 queryOptions.FilterQueries = BuildFilterQuery(ops.Facets);
             }
 
-            result = solr.Query(SolrQuery.All, queryOptions);
+            var result = solr.Query(SolrQuery.All, queryOptions);
 
             return new SolrSearchResults()
             {

@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC.LogginPortal.Service</RootNamespace>
-    <AssemblyName>SC.LogginPortal.Service</AssemblyName>
+    <RootNamespace>SC.LoggingPortal.Service</RootNamespace>
+    <AssemblyName>SC.LoggingPortal.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -146,7 +146,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\sc.logginportal.js" />
+    <Content Include="Scripts\sc.loggingportal.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

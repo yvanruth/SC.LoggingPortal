@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.Active = "home";
+}
+
+@model OverviewModel
+
+<div class="results" data-pageid="@Model.Page">
+    <div class="col-md-4 facets">
+        <div><a href="#">Reload</a></div>
+        <div class="category"><b>Facets</b></div>
+        @foreach (var facet in Model.Facets)
+        {
+            <div>
+                <div><b>@facet.FieldName</b></div>
+                <ul>
+                    @foreach (var filter in facet.Filters)
+                    {
+                        <li>
+                            <label>
+                                <input type="checkbox" name="facet" value="@filter.Value" />
+                                @filter.Value (@filter.Count)
+                            </label>
+                        </li>
+                    }
+                </ul>
+
+            </div>
+        }
+    </div>
+
+    <div class="col-md-8 actualresult">
+        <div>
+            <a class="page page-prev" href="#"><</a> <a class="page page-next" href="#">></a>
+        </div>
+        <div class="category"><b>Total results: @Model.TotalCount</b> (Page: @Model.Page)</div>
+        @foreach (var r in Model.Results)
+        {
+            <div class="record">
+                <div class="overflowfix">
+                    <div class="col-md-2">@r.TimeStamp.ToString("dd-MM-yyyy HH:mm")</div>
+                    <div class="col-md-3">@r.LoggerName</div>
+                    <div class="col-md-7">@r.LoggerMessage</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

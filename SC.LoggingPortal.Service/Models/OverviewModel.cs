@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SC.LogginPortal.Service.Models
+namespace SC.LoggingPortal.Service.Models
 {
     public class OverviewModel
     {
