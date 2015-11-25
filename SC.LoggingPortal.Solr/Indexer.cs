@@ -1,6 +1,7 @@
 ﻿using SC.LoggingPortal.CastleWindsor;
 using SC.LoggingPortal.Data.Entity;
 using SC.LoggingPortal.Data.Repository;
+using SC.LoggingPortal.Solr.Models;
 using SolrNet;
 using System;
 using System.Collections.Generic;

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using SC.LoggingPortal.Solr.Models;
 
 namespace SC.LoggingPortal.Solr
 {
@@ -60,7 +61,6 @@ namespace SC.LoggingPortal.Solr
             var resultFacets = result.FacetFields.Select(f => new SolrFacet()
                 {
                     FieldName = f.Key,
-                    FacetType = SolrFacetType.FIELD,
                     Filters = f.Value.Select(fi => new SolrFilter()
                     {
                         Value = fi.Key,
@@ -68,17 +68,6 @@ namespace SC.LoggingPortal.Solr
                         Checked = (selectedFacets.ContainsKey(f.Key) && selectedFacets[f.Key].Any(v => v.Equals(fi.Key, StringComparison.OrdinalIgnoreCase)))
                     }).ToList()
                 }).ToList();
-            resultFacets.AddRange(result.FacetDates.Select(f => new SolrFacet()
-            {
-                FieldName = f.Key,
-                FacetType = SolrFacetType.DATE,
-                Filters = f.Value.DateResults.Select(fi => new SolrFilter()
-                {
-                    Value = fi.Key,
-                    Count = fi.Value,
-                    Checked = false,
-                }).ToList()
-            }));
 
             resultFacets = resultFacets.OrderBy(f => f.FieldName).ToList();
             var loggerNameFacet = resultFacets.FirstOrDefault(c => c.FieldName.Equals("logger_name", StringComparison.OrdinalIgnoreCase));
@@ -103,7 +92,7 @@ namespace SC.LoggingPortal.Solr
                     // Date Query
                     string[] datesArray = kvp.Value.FirstOrDefault().Split('|');
                     DateTime min = DateTime.MinValue, max = DateTime.MinValue;
-                    
+
                     if (DateTime.TryParse(datesArray[0], out min) &&
                         DateTime.TryParse(datesArray[1], out max) &&
                         min != DateTime.MinValue &&

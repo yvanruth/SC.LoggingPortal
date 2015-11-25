@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SC.LoggingPortal.Solr.Models;
 
 namespace SC.LoggingPortal.Service.Models
 {
@@ -10,11 +11,11 @@ namespace SC.LoggingPortal.Service.Models
         public int Page { get; set; }
         public int TotalPages { get; set; }
 
-        public List<SC.LoggingPortal.Solr.SolrLogMessage> Results { get; set; }
+        public List<SolrLogMessage> Results { get; set; }
 
         public int TotalCount { get; set; }
 
-        public List<SC.LoggingPortal.Solr.SolrFacet> Facets { get; set; }
+        public List<SolrFacet> Facets { get; set; }
         public string Timestamp { get; set; }
     }
 }

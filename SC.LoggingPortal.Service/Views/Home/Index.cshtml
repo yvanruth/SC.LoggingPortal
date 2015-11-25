@@ -18,7 +18,7 @@
                 {
                     foreach (var filter in facet.Filters.Where(c => c.Checked))
                     {
-                        string name = facet.FacetType == SC.LoggingPortal.Solr.SolrFacetType.DATE ? ((DateTime)filter.Value).ToString("yyyy-MM-dd") : (string)filter.Value;
+                        string name = filter.Value;
                         if (name.Length > 30) { name = name.Substring(0, 27) + "..."; }
                                 
                         <a href="#" class="btn btn-default del-filter" data-filter="@filter.Value" data-facet="@facet.FieldName">
@@ -42,8 +42,6 @@
             @foreach (var facet in Model.Facets)
             {
                 <div><b>@LoggingPortalHtmlHelper.FriendlyFieldName(facet.FieldName)</b></div>
-                if (facet.FacetType == SC.LoggingPortal.Solr.SolrFacetType.FIELD)
-                {
                 <ul>
                     @foreach (var filter in facet.Filters)
                     {
@@ -55,7 +53,6 @@
                     </li>
                     }
                 </ul>
-                }
             }
         </div>
     </form>
