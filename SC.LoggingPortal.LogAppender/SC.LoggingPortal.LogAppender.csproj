@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\DEVELOPMENT.pubxml" />
+    <Content Include="SC.LoggingPortal.LogAppender.config" />
     <None Include="Web References\SC.LoggingPortal.LogAppender.Service\SCLogger1.xsd">
       <SubType>Designer</SubType>
     </None>
