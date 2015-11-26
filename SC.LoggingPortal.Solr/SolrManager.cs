@@ -10,16 +10,19 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using SC.LoggingPortal.Solr.Models;
+using SC.LoggingPortal.Data.Entity;
 
 namespace SC.LoggingPortal.Solr
 {
-    public class SolrProvider
+    public class SolrManager : ISolrManager
     {
         ISolrOperations<SolrLogMessage> solr;
+        IndexService indexService;
 
-        public SolrProvider()
+        public SolrManager()
         {
             solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
+            indexService = new IndexService();
         }
 
         public SolrSearchResults GetResults()
@@ -119,5 +122,17 @@ namespace SC.LoggingPortal.Solr
             facetQueryList.AddRange(facets_fields.Select(f => new SolrFacetFieldQuery(new LocalParams { { "ex", f } } + f)));
             return facetQueryList;
         }
+
+        #region Index
+        public async Task IndexAll()
+        {
+            await indexService.FullIndex();
+        }
+
+        public void IndexSingle(LogMessage message)
+        {
+            indexService.AddSingle(message);
+        }
+        #endregion
     }
 }

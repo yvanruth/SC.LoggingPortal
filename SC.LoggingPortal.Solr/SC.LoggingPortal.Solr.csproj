@@ -87,14 +87,15 @@
     <Compile Include="Configuration\SolrCore.cs" />
     <Compile Include="Configuration\SolrNetFacility.cs" />
     <Compile Include="Configuration\StrictArrayResolver.cs" />
-    <Compile Include="Indexer.cs" />
+    <Compile Include="IndexService.cs" />
+    <Compile Include="Models\ISolrManager.cs" />
     <Compile Include="Models\SolrFacet.cs" />
     <Compile Include="Models\SolrFilter.cs" />
     <Compile Include="Models\SolrLogMessage.cs" />
     <Compile Include="Models\SolrRequestOptions.cs" />
     <Compile Include="Models\SolrSearchResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolrProvider.cs" />
+    <Compile Include="SolrManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

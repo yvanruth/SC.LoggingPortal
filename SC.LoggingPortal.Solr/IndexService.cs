@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace SC.LoggingPortal.Solr
 {
-    public class Indexer
+    internal class IndexService
     {
         private int updateCount = 1000;
         ISolrOperations<SolrLogMessage> solr;
 
         private IRepository<LogMessage> _loggingRepository;
 
-        public Indexer()
+        public IndexService()
         {           
             solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
             _loggingRepository = Windsor.Container.Resolve<IRepository<LogMessage>>();

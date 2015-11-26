@@ -1,5 +1,4 @@
-﻿using SC.LoggingPortal.Solr;
-using SC.LoggingPortal.Solr.Models;
+﻿using SC.LoggingPortal.Solr.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,13 +8,13 @@ using System.Web.Mvc;
 
 namespace SC.LoggingPortal.Service.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public const int PageSize = 100;
 
         public ActionResult Index()
         {
-            var result = new SolrProvider().GetResults();
+            var result = SolrManager.GetResults();
 
             return View(new Models.OverviewModel()
             {
@@ -45,7 +44,7 @@ namespace SC.LoggingPortal.Service.Controllers
                 }
             }
 
-            var result = new SolrProvider().GetResults(new SolrRequestOptions()
+            var result = SolrManager.GetResults(new SolrRequestOptions()
             {
                 Page = page,
                 PageSize = PageSize,

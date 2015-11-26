@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SC.LoggingPortal.Service.Controllers
 {
-    public class SolrController : Controller
+    public class SolrController : BaseController
     {
         [HttpGet]
         public ActionResult Index()
@@ -22,7 +22,7 @@ namespace SC.LoggingPortal.Service.Controllers
         {
             var s = new System.Diagnostics.Stopwatch();
             s.Start();
-            await new SC.LoggingPortal.Solr.Indexer().FullIndex();
+            await SolrManager.IndexAll();
             s.Stop();
             Debug.WriteLine("Solr Index reindex in: " + s.ElapsedMilliseconds + " ms");
 
