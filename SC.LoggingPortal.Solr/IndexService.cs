@@ -19,6 +19,8 @@ namespace SC.LoggingPortal.Solr
 
         private IRepository<LogMessage> _loggingRepository;
 
+        private List<SolrLogMessage> _bulkAddList = new List<SolrLogMessage>();
+
         public IndexService()
         {           
             solr = Windsor.Container.Resolve<ISolrOperations<SolrLogMessage>>();
@@ -63,8 +65,14 @@ namespace SC.LoggingPortal.Solr
         {
             if (message != null)
             {
-                solr.Add(DMtoSolrModel(message));
-                solr.Commit();
+                _bulkAddList.Add(DMtoSolrModel(message));
+
+                if (_bulkAddList.Count >= 100)
+                {
+                    solr.AddRange(_bulkAddList);
+                    solr.Commit();
+                    _bulkAddList.Clear();
+                }
             }
         }
 
@@ -83,16 +91,8 @@ namespace SC.LoggingPortal.Solr
                 LogLevel = model.LogLevel,
                 LoggerMessage = model.LoggerMessage,
                 LogUserIdentity = model.LogUserIdentity,
-                TimeStamp = RandomDay()// model.TimeStamp
+                TimeStamp = model.TimeStamp
             };
-        }
-        DateTime RandomDay()
-        {
-            DateTime start = new DateTime(1995, 1, 1);
-            Random gen = new Random();
-
-            int range = (DateTime.Today - start).Days;
-            return start.AddDays(gen.Next(range));
         }
     }
 }

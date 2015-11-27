@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.SignalR;
-using SC.LoggingPortal.Logic.Services;
+﻿using SC.LoggingPortal.Logic.Services;
 using SC.LoggingPortal.Service.SignalR;
 using SC.LoggingPortal.Solr;
 using SC.LoggingPortal.Solr.Models;
@@ -12,24 +11,37 @@ namespace SC.LoggingPortal.Service
     public class SCLogger : ISCLogger
     {
         private readonly ILoggingService _loggingService;
-        private readonly IHubContext hub;
         private ISolrManager _solrManager;
 
         public SCLogger(ILoggingService loggingService)
         {
             this._loggingService = loggingService;
-            hub = GlobalHost.ConnectionManager.GetHubContext<LoggingHub>();
             this._solrManager = new SolrManager();
         }
 
         public void LogMessage(SC.LoggingPortal.Data.Entity.LogMessage message)
         {
             message.TimeStamp = DateTime.Now;
+            // Mongo
+            try
+            {
+                this._loggingService.LogMessage(message);
+            }
+            catch { }
 
-            this._loggingService.LogMessage(message);
-            hub.Clients.All.pull(message);
-            this._solrManager.IndexSingle(message);
-            // Update solr index
+            // Solr
+            try
+            {
+                this._solrManager.IndexSingle(message);
+            }
+            catch { }
+
+            // SignalR (realtime)
+            try
+            {
+                LoggingHub.PushLogMessage(message);
+            }
+            catch { }
         }
     }
 }
