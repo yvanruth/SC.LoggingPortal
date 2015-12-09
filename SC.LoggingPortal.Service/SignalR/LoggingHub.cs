@@ -10,9 +10,10 @@ namespace SC.LoggingPortal.Service.SignalR
     [HubName("loggingHub")]
     public class LoggingHub : Hub
     {
-        public void PushLogMessage(string message)
+        public static void PushLogMessage(SC.LoggingPortal.Data.Entity.LogMessage message)
         {
-            Clients.All.pull(message);
+            var hub = GlobalHost.ConnectionManager.GetHubContext<LoggingHub>();
+            hub.Clients.All.LogMessage(message);
         }
     }
 }
