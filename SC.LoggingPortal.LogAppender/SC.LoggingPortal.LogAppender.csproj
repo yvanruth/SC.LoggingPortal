@@ -76,7 +76,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Log4NetTester.aspx" />
     <None Include="packages.config" />
     <None Include="log4net.config">
       <SubType>Designer</SubType>
@@ -101,13 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Log4NetMongoAppender.cs" />
-    <Compile Include="Log4NetTester.aspx.cs">
-      <DependentUpon>Log4NetTester.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Log4NetTester.aspx.designer.cs">
-      <DependentUpon>Log4NetTester.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
